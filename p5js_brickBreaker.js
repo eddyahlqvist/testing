@@ -5,13 +5,13 @@ var brickWidth = 60;
 var brickHeight = 30;
 var ballMoving = false; //True if ball is moving, false if ball is attached to paddle.
 var bricks = [];
-var rows = 6;
-var columns = 12;
-var cnv;
+var rows = 6; //Number of rows with bricks
+var columns = 12; //Number of columns with bricks
+var cnv; //Variable for the center Canvas thing
 
 function centerCanvas() {
-  var x = (windowWidth - width)*0.5;
-  var y = (windowHeight - height)*0.5;
+  var x = (windowWidth - width)/2;
+  var y = (windowHeight - height)/2;
   cnv.position(x, y);
 }
 
@@ -28,7 +28,7 @@ function setup() {
 
   for (var i = 0; i < columns; i++) {
     for (var j = 0; j < rows; j++) {
-      bricks[i*rows + j] = new Bricks((i+1)*brickWidth+80, (j+1)*brickHeight+80);
+      bricks[i*rows + j] = new Brick((i+1)*brickWidth+80, (j+1)*brickHeight+80);
     }
   }
 }
@@ -44,6 +44,11 @@ function draw() {
 
   for (var i = 0; i < bricks.length; i++) {
     bricks[i].display();
+    for (var j = 0; j < bricks.length; j++) {
+      if (ball.checkIfHitBrick(bricks[i])) { //Checks the distance between the ball and the bricks and detects if it's a collision
+        bricks[i].brickBounce(); //Makes the ball bounce when it hits the bricks
+      }
+    }
   }
 }
 

@@ -7,6 +7,7 @@ function Paddle()
   this.display = function() {
     fill(255, 0, 200, 150);
     rect(mouseX, this.y, this.pw, this.ph, 6);
+    
   }
 
   this.bounds = function() {
