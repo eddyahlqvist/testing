@@ -47,7 +47,14 @@ function draw() {
     for (var j = 0; j < bricks.length; j++) {
       if (ball.checkIfHitBrick(bricks[i])) { //Checks the distance between the ball and the bricks and detects if it's a collision
         bricks[i].brickBounce(); //Makes the ball bounce when it hits the bricks
+        bricks[i].vanish();
       }
+    }
+  }
+
+  for (var i = bricks.length-1; i >= 0; i--) {
+    if (bricks[i].toDelete) {
+      bricks.splice(i, 1);
     }
   }
 }

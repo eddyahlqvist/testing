@@ -4,8 +4,11 @@ function Brick(x, y)
   this.y = y;
   this.brickWidth = brickWidth;
   this.brickHeight = brickHeight;
+  this.toDelete = false;
 
-  this.brickBounce = function() {
+  //Testing to adding some functions into 'Prototype'
+  //This will make the functions be stored only once, and not in all of the bricks.
+  Brick.prototype.brickBounce = function() {
     if (ball.y - ball.br <= this.y + this.brickHeight &&  ball.y - ball.br >= this.y && ball.x >= this.x && ball.x <= this.x + this.brickWidth) {
       ball.speedY = +4;
     }
@@ -20,8 +23,9 @@ function Brick(x, y)
     }
   }
 
-  //Testing to adding the display function into 'Prototype'
-  //This will make the function be stored only once, and not in all of the bricks.
+  Brick.prototype.vanish = function() {
+    this.toDelete = true;
+  }
 
   Brick.prototype.display = function() {
     fill(0, 255, 200, 150);
