@@ -49,6 +49,10 @@ function Ball(x, y)
     }
     if (this.y >= height - 60 - this.br + paddle.ph) { //Check if the ball goes out of play at the bottom
       ballMoving = false;
+      info.lives -= 1;
+      if (info.lives < 1) {
+        gameOver();
+      }
     }
     if (ballMoving) {
       this.x += this.speedX;
