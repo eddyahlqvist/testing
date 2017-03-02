@@ -1,3 +1,6 @@
+var br = 10; //Ball Radius
+var ballMoving = false; //True if ball is moving, false if ball is attached to paddle.
+
 function Ball(x, y) 
 {
   this.x = x;
@@ -50,9 +53,6 @@ function Ball(x, y)
     if (this.y >= height - 60 - this.br + paddle.ph) { //Check if the ball goes out of play at the bottom
       ballMoving = false;
       info.lives -= 1;
-      if (info.lives < 1) {
-        gameOver();
-      }
     }
     if (ballMoving) {
       this.x += this.speedX;

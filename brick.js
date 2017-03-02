@@ -61,6 +61,10 @@ function brickFunctionality() {
   for (var i = bricks.length-1; i >= 0; i--) {
     if (bricks[i].toDelete) {
       bricks.splice(i, 1);
+      info.score += 10; //Adds 10 points to score for each brick that gets removed
+      if (bricks.length <= 0) {
+        info.win();
+      }
     }
   }
 }

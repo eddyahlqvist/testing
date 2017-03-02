@@ -1,3 +1,6 @@
+var pw = 100; //Paddle Width
+var ph = 14; //Paddle Height
+
 function Paddle() 
 {
   this.y = height - 60; //Paddle Y value
@@ -7,7 +10,6 @@ function Paddle()
   this.display = function() {
     fill(255, 0, 200, 150);
     rect(mouseX, this.y, this.pw, this.ph, 6);
-    
   }
 
   this.bounds = function() {

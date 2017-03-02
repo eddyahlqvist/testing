@@ -1,10 +1,3 @@
-var br = 10; //Ball Radius
-var pw = 100; //Paddle Width
-var ph = 14; //Paddle Height
-
-var ballMoving = false; //True if ball is moving, false if ball is attached to paddle.
-
-
 var cnv; //Variable for the center Canvas thing
 
 function centerCanvas() {
@@ -21,7 +14,8 @@ function setup() {
   cnv = createCanvas(1000, 800);
   centerCanvas();
   noCursor();
-  paddle = new Paddle ();
+  info = new info;
+  paddle = new Paddle();
   ball = new Ball();
   brickSetup();
 }
@@ -33,10 +27,14 @@ function draw() {
   paddle.bounds();
   paddle.display();
   ball.display();
+  info.livesDisplay();
   ball.move();
   brickFunctionality();
 }
 
 function mousePressed() {
-  ballMoving = true;
+  if (mouseIsPressed) {
+    if (mouseButton == LEFT)
+      ballMoving = true;
+  }
 }
