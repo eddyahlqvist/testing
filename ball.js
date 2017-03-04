@@ -36,10 +36,18 @@ function Ball(x, y)
     var dy=distY-brick.brickHeight/2;
     return (dx*dx+dy*dy<=(this.br*this.br));
   }
-
+  
   this.move = function(dir) {
-    if (this.y + this.br >= paddle.y && this.x >= mouseX && this.x <= mouseX + paddle.pw) { //Check if the ball hits the paddle
+    if (this.y + this.br >= paddle.y && this.x >= mouseX + 30 && this.x <= mouseX + paddle.pw - 30) { //Check if the ball hits middle part of paddle
       this.speedY *= -1;
+    }
+    if (this.y + this.br >= paddle.y && this.x > mouseX && this.x < mouseX + 35) { //Check if the ball hits the left part of paddle
+      this.speedY = -4;
+      this.speedX = -4;
+    }
+    if (this.y + this.br >= paddle.y && this.x > mouseX + paddle.pw - 35 && this.x < mouseX + paddle.pw) { //Check if the ball hits the right part of paddle
+      this.speedY = -4;
+      this.speedX = +4;
     }
     if (this.x >= width - this.br) { //Check if the ball hits the right wall
       this.speedX *= -1;
@@ -58,8 +66,8 @@ function Ball(x, y)
       this.x += this.speedX;
       this.y += this.speedY;
     } else {
-      this.x = mouseX + paddle.pw*0.7; //Ball starts on top of the paddle.
-      this.y = paddle.y - br -0.1;
+      this.x = mouseX + paddle.pw*0.8; //Ball starts on top of the paddle.
+      this.y = paddle.y - br - 0.2;
       this.speedX = +4;
       this.speedY = -4;
     }
