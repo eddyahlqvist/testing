@@ -4,17 +4,51 @@ function info() {
 
   this.win = function() {
     ballMoving = false;
+    cursor();
+    textSize(32);
+    fill(255);
+    textAlign(CENTER);
+    text("You beat the game! " + " You got " + this.score + " points", width/2, height/2);
+    fill(50);
+    rect(width/2 - 125, height/2 + 50, 250, 40, 25);
+    fill(255);
+    text("Restart Game", width/2, height/2 + 82);
+    textAlign(LEFT);
+    if (mouseIsPressed) {
+      if (mouseButton == LEFT)
+        this.restartGame();
+    }
+  }
+
+  this.gameOver = function() {
+    ballMoving = false;
+    cursor();
+    textSize(32);
+    fill(255);
+    textAlign(CENTER);
+    text("Game Over! " + " You got " + this.score + " points", width/2, height/2);
+    fill(50);
+    rect(width/2 - 125, height/2 + 50, 250, 40, 25);
+    fill(255);
+    text("Restart Game", width/2, height/2 + 82);
+    textAlign(LEFT);
+    if (mouseIsPressed) {
+      if (mouseButton == LEFT)
+        this.restartGame();
+    }
+  }
+
+  this.restartGame = function() {
+    noCursor();
     brickSetup();
-    alert("You beat the game! " + " You got " + this.score + " points");
     this.lives = 3;
     this.score = 0;
   }
 
-  this.gameOver = function() {
-    alert("Game Over! " + " You got " + this.score + " points");
-    brickSetup();
-    this.lives = 3;
-    this.score = 0;
+  this.scoreDisplay = function() {
+    textSize(32);
+    fill(255);
+    text("Score: " + this.score, 25, height - 12);
   }
 
   this.livesDisplay = function() {

@@ -52,7 +52,7 @@ function Ball(x, y)
     }
     if (this.y >= height - 60 - this.br + paddle.ph) { //Check if the ball goes out of play at the bottom
       ballMoving = false;
-      info.lives -= 1;
+      info.lives -= 1; //Removes a life each time the ball goes out of play
     }
     if (ballMoving) {
       this.x += this.speedX;

@@ -30,6 +30,7 @@ function draw() {
   info.livesDisplay();
   ball.move();
   brickFunctionality();
+  info.scoreDisplay();
 }
 
 function mousePressed() {
