@@ -61,6 +61,7 @@ function brickFunctionality() {
   for (var i = bricks.length-1; i >= 0; i--) {
     if (bricks[i].toDelete) {
       bricks.splice(i, 1);
+      randomSound();
       info.score += 10; //Adds 10 points to score for each brick that gets removed
     }
   }
@@ -68,4 +69,9 @@ function brickFunctionality() {
   if (bricks.length <= 0) {
     info.win();
   }
+}
+
+function randomSound() {
+  var rand = floor(random(2));
+  bounceSounds[rand].play();
 }

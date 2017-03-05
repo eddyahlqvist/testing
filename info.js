@@ -83,3 +83,12 @@ function info() {
     }
   }
 }
+
+function soundLevels() {
+  paddleSound.rate(2);
+  paddleSound.setVolume(0.2);
+  outSound.setVolume(0.2);
+  wallSound.setVolume(0.1);
+  bounceSounds[0].setVolume(0.2);
+  bounceSounds[1].setVolume(0.2);
+}

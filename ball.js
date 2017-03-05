@@ -36,31 +36,38 @@ function Ball(x, y)
     var dy=distY-brick.brickHeight/2;
     return (dx*dx+dy*dy<=(this.br*this.br));
   }
-  
+
   this.move = function(dir) {
     if (this.y + this.br >= paddle.y && this.x >= mouseX + 30 && this.x <= mouseX + paddle.pw - 30) { //Check if the ball hits middle part of paddle
       this.speedY *= -1;
+      paddleSound.play();
     }
     if (this.y + this.br >= paddle.y && this.x > mouseX && this.x < mouseX + 35) { //Check if the ball hits the left part of paddle
       this.speedY = -4;
       this.speedX = -4;
+      paddleSound.play();
     }
     if (this.y + this.br >= paddle.y && this.x > mouseX + paddle.pw - 35 && this.x < mouseX + paddle.pw) { //Check if the ball hits the right part of paddle
       this.speedY = -4;
       this.speedX = +4;
+      paddleSound.play();
     }
     if (this.x >= width - this.br) { //Check if the ball hits the right wall
       this.speedX *= -1;
+      wallSound.play();
     }
     if (this.x <= 0 + this.br) { //Check if the ball hits the left wall
       this.speedX *= -1;
+      wallSound.play();
     }
     if (this.y <= 0 + this.br) { //Check if the ball hits the top wall
       this.speedY *= -1;
+      wallSound.play();
     }
     if (this.y >= height - 60 - this.br + paddle.ph) { //Check if the ball goes out of play at the bottom
       ballMoving = false;
       info.lives -= 1; //Removes a life each time the ball goes out of play
+      outSound.play();
     }
     if (ballMoving) {
       this.x += this.speedX;
