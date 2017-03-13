@@ -1,3 +1,5 @@
+//Eddy Ahlqvist
+
 function preload() {
   bounceSounds[0] = loadSound("sounds/bounce1.mp3"); 
   bounceSounds[1] = loadSound("sounds/bounce2.mp3");
@@ -8,10 +10,11 @@ function preload() {
 
 var cnv; //Variable for the center Canvas thing
 var bounceSounds = [];
+var bricks = [];
 
 function centerCanvas() {
-  var x = (windowWidth - width)/2;
-  var y = (windowHeight - height)/2;
+  x = (windowWidth - width)/2;
+  y = (windowHeight - height)/2;
   cnv.position(x, y);
 }
 
@@ -19,13 +22,20 @@ function windowResized() {
   centerCanvas();
 }
 
+function mousePressed() {
+  if (mouseIsPressed) {
+    if (mouseButton == LEFT)
+      ball.ballMoving = true;
+  }
+}
+
 function setup() {
   cnv = createCanvas(1000, 800);
   centerCanvas();
   noCursor();
-  info = new info;
-  paddle = new Paddle();
-  ball = new Ball();
+  info = new Info(3);
+  paddle = new Paddle(100, 14, height - 60);
+  ball = new Ball(10);
   brickSetup();
 }
 
@@ -33,19 +43,12 @@ function draw() {
   background(0, 100, 155);
   fill(50);
   rect(0, height-60+paddle.ph, width, 60-paddle.ph); //Paints the bottom 
-  soundLevels();
-  paddle.bounds();
-  paddle.display();
+  info.soundLevels();
   info.livesDisplay();
   info.scoreDisplay();
+  paddle.bounds();
+  paddle.display();
   ball.display();
   ball.move();
   brickFunctionality();
-}
-
-function mousePressed() {
-  if (mouseIsPressed) {
-    if (mouseButton == LEFT)
-      ballMoving = true;
-  }
 }

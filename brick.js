@@ -1,11 +1,12 @@
-var bricks = [];
+//Eddy Ahlqvist
+
+//FIXA TILL DEN HÄR KLASSEN!
 var rows = 6; //Number of rows with bricks
 var columns = 12; //Number of columns with bricks
 var brickWidth = 60;
 var brickHeight = 30;
 
-function Brick(x, y) 
-{
+function Brick(x, y) {
   this.x = x;
   this.y = y;
   this.brickWidth = brickWidth;

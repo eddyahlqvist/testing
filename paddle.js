@@ -1,11 +1,9 @@
-var pw = 100; //Paddle Width
-var ph = 14; //Paddle Height
+//Eddy Ahlqvist
 
-function Paddle() 
-{
-  this.y = height - 60; //Paddle Y value
-  this.ph = ph; //Paddle Height 
+function Paddle(pw, ph, y) {
+  this.y = y;   //Paddle Y value   
   this.pw = pw; //Paddle Width
+  this.ph = ph; //Paddle Height
 
   this.display = function() {
     fill(255, 0, 200, 150);

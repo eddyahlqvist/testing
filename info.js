@@ -1,9 +1,11 @@
-function info() {
-  this.lives = 3; 
-  this.score = 0; 
+//Eddy Ahlqvist
+
+function Info(lives) {
+  this.lives = lives; 
+  this.score = 0;
 
   this.win = function() {
-    ballMoving = false;
+    ball.ballMoving = false;
     cursor();
     textSize(32);
     fill(255);
@@ -21,7 +23,7 @@ function info() {
   }
 
   this.gameOver = function() {
-    ballMoving = false;
+    ball.ballMoving = false;
     cursor();
     textSize(32);
     fill(255);
@@ -82,13 +84,13 @@ function info() {
       this.gameOver();
     }
   }
-}
 
-function soundLevels() {
-  paddleSound.rate(2);
-  paddleSound.setVolume(0.2);
-  outSound.setVolume(0.2);
-  wallSound.setVolume(0.1);
-  bounceSounds[0].setVolume(0.2);
-  bounceSounds[1].setVolume(0.2);
+  this.soundLevels = function() {
+    paddleSound.rate(2);
+    paddleSound.setVolume(0.2);
+    outSound.setVolume(0.2);
+    wallSound.setVolume(0.1);
+    bounceSounds[0].setVolume(0.2);
+    bounceSounds[1].setVolume(0.2);
+  }
 }

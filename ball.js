@@ -1,13 +1,12 @@
-var br = 10; //Ball Radius
-var ballMoving = false; //True if ball is moving, false if ball is attached to paddle.
+//Eddy Ahlqvist
 
-function Ball(x, y) 
-{
-  this.x = x;
-  this.y = y;
+function Ball(br) {
+  this.ballMoving = false; //True if ball is moving, false if ball is attached to paddle.
+  this.x;
+  this.y;
+  this.br = br;
   this.speedX = -4;
   this.speedY = -4;
-  this.br = br;
 
   this.display = function() {
     fill(255, 0, 200, 150);
@@ -65,16 +64,16 @@ function Ball(x, y)
       wallSound.play();
     }
     if (this.y >= height - 60 - this.br + paddle.ph) { //Check if the ball goes out of play at the bottom
-      ballMoving = false;
+      this.ballMoving = false;
       info.lives -= 1; //Removes a life each time the ball goes out of play
       outSound.play();
     }
-    if (ballMoving) {
+    if (this.ballMoving) {
       this.x += this.speedX;
       this.y += this.speedY;
     } else {
       this.x = mouseX + paddle.pw*0.8; //Ball starts on top of the paddle.
-      this.y = paddle.y - br - 0.2;
+      this.y = paddle.y - this.br - 0.2;
       this.speedX = +4;
       this.speedY = -4;
     }
