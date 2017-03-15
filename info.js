@@ -86,11 +86,16 @@ function Info(lives) {
   }
 
   this.soundLevels = function() {
-    paddleSound.rate(2);
-    paddleSound.setVolume(0.2);
-    outSound.setVolume(0.2);
-    wallSound.setVolume(0.1);
-    bounceSounds[0].setVolume(0.2);
-    bounceSounds[1].setVolume(0.2);
+    sounds[3].rate(2);
+    sounds[3].setVolume(0.2);
+    sounds[2].setVolume(0.2);
+    sounds[4].setVolume(0.1);
+    sounds[0].setVolume(0.2);
+    sounds[1].setVolume(0.2);
+  }
+
+  this.randomSound = function() {
+    var rand = floor(random(2));
+    sounds[rand].play();
   }
 }
